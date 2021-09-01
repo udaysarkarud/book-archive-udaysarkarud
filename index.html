@@ -13,13 +13,48 @@
 
 <body>
     <header>
-
+        <section class="container">
+            <nav class="navbar navbar-dark bg-dark rounded">
+                <div class="container-fluid">
+                    <a class="navbar-brand fs-4 fw-bold">Book Archive</a>
+                    <div class="d-flex">
+                        <input id="searchInput" class="form-control me-2" type="search" placeholder="Enter Book Name"
+                            value="javascript">
+                        <button id="searchBtn" class="btn btn-outline-success" type="submit">Search</button>
+                    </div>
+                </div>
+            </nav>
+        </section>
     </header>
     <main>
+        <!-- Books Results Start -->
+        <section class="container my-5">
+            <div id="bookSearchArea" class="row row-cols-1 row-cols-md-3 g-4">
 
+            </div>
+        </section>
+        <!-- Books Results End -->
+
+        <!-- Error Messages Start -->
+        <!-- Error: Type a Valid Name -->
+        <section id="erroTypeAName" class="container my-5  d-none">
+            <div class="bg-warning text-center p-3 text-light fw-bold rounded">
+                <h2>Please Type a Valid Book Nane</h2>
+            </div>
+        </section>
+        <!-- Error: No Result Found -->
+        <section id="erroNoResults" class="container my-5 d-none">
+            <div class="bg-danger text-center p-3 text-light fw-bold rounded">
+                <h2>No Results Found...</h2>
+            </div>
+        </section>
+        <!-- Error Messages end -->
     </main>
     <footer>
+        <!-- Total Book Count -->
+        <section id="totalBooksFound" class="container my-5">
 
+        </section>
     </footer>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
