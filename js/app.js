@@ -35,25 +35,23 @@ const getData = searchText => {
             totalBooksFound.innerHTML = '';
             let showBooksCount = 0;
             data.docs.forEach(element => {
-                const { cover_i, title, subtitle, author_name, publisher, first_publish_year } = element
+                const { cover_i, title, subtitle, author_name, publisher, first_publish_year } = element;
                 showBooksCount++;
-                //const bookSubtitle = ': '.concat(subtitle)
                 const singleBook = document.createElement('div');
                 singleBook.classList.add('col');
                 singleBook.innerHTML = `
                     <div class="card">
                         <img src="https://covers.openlibrary.org/b/id/${cover_i}-M.jpg" class="card-img-top" alt="..." >
                         <div class="card-body">
-                            <h4 class="card-title">${title}${subtitle ? `${': '.concat(subtitle)}` : ''}</h4>
-                            <h6 class="text-muted">by ${author_name ? author_name[0] : 'Unknow Author'}</h6>
+                            <h4 class="card-title">${title ? title : 'Unknown Book Name'}${subtitle ? `${': '.concat(subtitle)}` : ''}</h4>
+                            <h6 class="text-muted">by ${author_name ? author_name.map(x => ` ` + x) : 'Unknow Author'}</h6>
                             <p class="card-text">
-                                <strong>Publisher:</strong> ${publisher ? publisher[0] : 'Unknow Publisher'}  | <strong>First published in:</strong> ${first_publish_year ? first_publish_year : 'Not Found'}
+                                <strong>Publisher:</strong> ${publisher ? publisher[0] : 'Unknow Publisher'}  </br> <strong>First published in:</strong> ${first_publish_year ? first_publish_year : 'Not Found'}
                             </p>
                         </div>
                     </div>                        
                 `;
                 bookSearchArea.appendChild(singleBook);
-
             });
             totalBooksFound.innerHTML = `
                 <div class="bg-success bg-opacity-75 text-white text-center p-3 fw-bold rounded">
