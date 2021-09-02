@@ -35,16 +35,19 @@ const getData = searchText => {
             totalBooksFound.innerHTML = '';
             let showBooksCount = 0;
             data.docs.forEach(element => {
+                const { cover_i, title, subtitle, author_name, publisher, first_publish_year } = element
                 showBooksCount++;
+                //const bookSubtitle = ': '.concat(subtitle)
                 const singleBook = document.createElement('div');
                 singleBook.classList.add('col');
                 singleBook.innerHTML = `
                     <div class="card">
-                        <img src="https://covers.openlibrary.org/b/id/${element.cover_i}-M.jpg" class="card-img-top" alt="..." >
+                        <img src="https://covers.openlibrary.org/b/id/${cover_i}-M.jpg" class="card-img-top" alt="..." >
                         <div class="card-body">
-                             <h4 class="card-title">${element.title}</h4>
-                            <h6 class="text-muted">by ${element.author_name ? element.author_name[0] : 'Unknow Author'}</h6>
-                            <p class="card-text"><strong>Publisher:</strong> ${element.publisher ? element.publisher[0] : 'Unknow Publisher'}  | <strong>First published in:</strong> ${element.first_publish_year ? element.first_publish_year : 'Not Found'}
+                            <h4 class="card-title">${title}${subtitle ? `${': '.concat(subtitle)}` : ''}</h4>
+                            <h6 class="text-muted">by ${author_name ? author_name[0] : 'Unknow Author'}</h6>
+                            <p class="card-text">
+                                <strong>Publisher:</strong> ${publisher ? publisher[0] : 'Unknow Publisher'}  | <strong>First published in:</strong> ${first_publish_year ? first_publish_year : 'Not Found'}
                             </p>
                         </div>
                     </div>                        
